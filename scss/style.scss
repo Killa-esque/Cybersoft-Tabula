@@ -1,0 +1,177 @@
+// Font-size:
+$text-xs-1: 14px;
+$text-xs-2: 13px;
+$text-xs-3: 12px;
+
+$text-sm-1: 16px;
+$text-sm-2: 18px;
+$text-sm-3: 20px;
+
+$text-md-1: 22px;
+$text-md-2: 24px;
+$text-md-3: 28px;
+
+$text-lg-1: 32px;
+$text-lg-2: 40px;
+$text-lg-3: 46px;
+
+$text-xl-1: 50px;
+$text-xl-2: 57px;
+$text-xl-3: 60px;
+
+//Font-weight:
+$text-weight-1: 100;
+$text-weight-2: 200;
+$text-weight-3: 300;
+$text-weight-4: 400;
+$text-weight-5: 500;
+$text-weight-6: 600;
+$text-weight-7: 700;
+$text-weight-8: 800;
+
+//Color:
+$primary-color: #131212;
+$secondary-color: #b61984;
+$tertiary-color: #fff;
+
+@mixin text ($fz,$fw,$color) {
+    font-size: $fz;
+    font-weight: $fw;
+    color: $color;
+}
+
+@mixin hover-nav-link ($color) {
+    &:hover{
+        color: $color;
+    }
+}
+
+
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+// Custom Navigation Bar
+.header{
+    #offCanvas{
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0px;
+        z-index: 15;
+        padding-top: 24px;
+        height: 100%;
+        overflow: auto;
+        overflow-x: hidden;
+        background: $tertiary-color ;
+        transition: all .5s ease;
+        .navbar-brand{
+            img{
+                object-fit: cover
+            }
+        }
+        .nav{
+            @include text($text-xs-2,$text-weight-5,$primary-color);
+            .nav-item{
+                margin:5px 0;
+                .nav-link{
+                    @include text($text-xs-2,$text-weight-6,$primary-color);
+                    @include hover-nav-link($secondary-color);
+                }
+            }
+        }
+    }
+    .container-fluid{
+        max-width: 1280px;
+        margin: auto;
+        .custom-navbar{
+            justify-content: space-between;
+            padding: 0;
+            @media screen and (max-width:992px) {
+                justify-content: flex-start;
+            }
+            .navbar-toggler{
+                span{
+                    i{
+
+                    }
+                }
+            }
+            .navbar-brand{
+                img{
+                    max-height: 80px;
+                    @media screen and (max-width:992px) {
+                        max-height: 50px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            #navbarNav{
+                .navbarNav-inner{
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    .navbar-nav{
+                        .nav-item{
+                            .nav-link{
+                                @include text($text-xs-2,$text-weight-6,$primary-color);
+                                @include hover-nav-link($secondary-color);
+                            }
+                        }
+                    }
+                    .contact{
+                        display: flex;
+                        align-items: center;
+                        .phone-number{
+                            margin:0 10px;
+                            padding: 13px 20px;
+                            background-color: $secondary-color;
+                            border-radius: 30px;
+                            @include text($text-xs-1,$text-weight-5,$tertiary-color);
+                            .phone-icon{
+                                i{
+
+                                }
+                            }
+                            .number{
+
+                            }
+                        }
+                        .social-media{
+                            .social-share{
+                                display: flex;
+                                align-items: center;
+                                margin: 0;
+                                .social-item{
+                                    .social-link{
+                                        i{
+                                            @include text($text-xs-1,$text-weight-5,$primary-color);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Toggle Button Design
+#toggleButton{
+    border: none;
+    outline: none;
+    transition: all .5s ease;
+}
